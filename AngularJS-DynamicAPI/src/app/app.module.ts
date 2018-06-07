@@ -1,6 +1,9 @@
 import {NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import {RouterModule} from '@angular/router'
+
 import { AppComponent } from './app.component';
 import { EmpComponent } from './emp.component';
 import { StudentComponent } from './Std.component';
@@ -11,7 +14,11 @@ import { ProductFilterPipe } from './products/product-filter.component';
 import { ProductFilterCodePipe } from './products/product-filtercode.component';
 import { StarComponent } from './shared/star.component';
 import { ProductService } from './products/product.service';
-import { HttpModule } from '@angular/http';
+
+import { HomeComponent } from './home/home.component';
+import { OrderComponent } from './orders/order.component';
+import { ProductDetailComponent } from './products/product-detail.component';
+import { NotFoundComponent } from './notfound/notfound.component';
 
 
 
@@ -20,7 +27,15 @@ import { HttpModule } from '@angular/http';
     imports:[
         BrowserModule,
         FormsModule,
-        HttpModule
+        HttpModule,
+        RouterModule.forRoot([
+            {path:'products', component:ProductComponent},
+            {path:'products/:id', component:ProductDetailComponent},
+            {path:'orders', component:OrderComponent},
+            {path:'home',component:HomeComponent},
+            {path:'', redirectTo:'home', pathMatch:'full'},
+            {path:'**', component:NotFoundComponent}
+        ])
     ],
     //All componenet and Pipes declare here
     declarations:[
@@ -32,7 +47,11 @@ import { HttpModule } from '@angular/http';
         ProducutAddValue,
         ProductFilterPipe,
         ProductFilterCodePipe,
-        StarComponent
+        StarComponent,
+        HomeComponent,
+        OrderComponent,
+        ProductDetailComponent,
+        NotFoundComponent
     ],
     //One main componenet come here
     bootstrap:[

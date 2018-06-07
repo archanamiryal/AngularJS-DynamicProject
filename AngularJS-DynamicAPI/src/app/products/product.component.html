@@ -31,7 +31,7 @@
                                <tr *ngFor="let product of products | ProductFilter : filteredData ">
                                      <th><img [src]="product.imageUrl" *ngIf="showImage" 
                                            [style.width.px]="imageWidth"/></th>
-                                     <td>{{product.productName | prodUpper:"lower"}}</td>
+                                     <td><a [routerLink]="['/products',product.productId]">{{product.productName | prodUpper:"upper"}}</a></td>
                                      <td>{{product.productCode |prodUpper:"upper"}}</td>
                                      <td>{{product.releaseDate}}</td>
                                      <td>{{product.price | AddValue | currency:'EUR'}}</td>

@@ -1,5 +1,5 @@
 import {Component} from'@angular/core'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute ,Router} from '@angular/router'
 
 @Component({
 
@@ -9,11 +9,30 @@ import { ActivatedRoute } from '@angular/router'
 })
 export class ProductDetailComponent
 {
+    name:string;
+    image:string;
+    description:string;
     title:string='Product Detail';
-    constructor(private _route:ActivatedRoute){}
+    constructor(private _route:ActivatedRoute,
+                private _router:Router){}
 
     ngOnInit():void{
         let id = +this._route.snapshot.params['id'];
         this.title += `:${id}`
+
+        this._route
+            .queryParams
+            .subscribe((params)=>{
+                this.name=params['name']
+                this.image=params['img']
+                this.description=params['description']
+
+            })
+
+
+    }
+    onBack():void
+    {
+        this._router.navigate(['/products'])
     }
 }

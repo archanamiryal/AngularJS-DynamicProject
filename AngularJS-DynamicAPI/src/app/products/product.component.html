@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div class="container"><div class="panel panel-primary">
     <div class="panel-heading">
           {{title}}
     </div>
@@ -31,7 +31,8 @@
                                <tr *ngFor="let product of products | ProductFilter : filteredData ">
                                      <th><img [src]="product.imageUrl" *ngIf="showImage" 
                                            [style.width.px]="imageWidth"/></th>
-                                     <td><a [routerLink]="['/products',product.productId]">{{product.productName | prodUpper:"upper"}}</a></td>
+                                     <td><a [routerLink]="['/products',product.productId]"
+                                             [queryParams]="{name:product.productName,img:product.imageUrl,description:product.description}">{{product.productName | prodUpper:"upper"}}</a></td>
                                      <td>{{product.productCode |prodUpper:"upper"}}</td>
                                      <td>{{product.releaseDate}}</td>
                                      <td>{{product.price | AddValue | currency:'EUR'}}</td>
@@ -47,3 +48,4 @@
  
  
  </div>
+</div>

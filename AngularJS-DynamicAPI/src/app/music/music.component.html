@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+          {{songTitle}}
+        </div>
+        <div class="panel-body">
+                <div class="row">
+                
+                    <div class="table-responsive">
+                       <table class="table table-bordered">
+                           <thead>
+                               <tr>
+                                   <td>Name</td>
+                                   <td>Cover</td>
+                                   <td>Bio</td>
+                                   <td>Genre</td>
+                                   <td>Albums</td>
+                                   
+                               </tr>
+    
+                           </thead>
+                           <tbody *ngFor="let song of songs">
+                               <tr>
+                                   <td>{{song.name}}</td>
+                                   <td>{{song.cover}}</td>
+                                   <td>{{song.bio}}</td>
+                                   <td>{{song.genre}}</td>
+                                   <td>
+                                       <table class="table table-bordered">
+                                           <thead>
+                                               <tr>
+                                                   <td>Title</td>
+                                                   <td>Year</td>
+                                                   <td>Cover</td>
+                                                   <td>Price</td>
+                                               </tr>
+    
+                                           </thead>
+                                           <tbody *ngFor="let album of song.albums">
+                                                <tr>
+                                                        <td>{{album.title}}</td>
+                                                        <td>{{album.year}}</td>
+                                                        <td>{{album.cover}}</td>
+                                                        <td>{{album.price}}</td>
+                                                    </tr>
+    
+                                           </tbody>
+                                       </table>
+                                   </td>
+                                  
+                               </tr>
+    
+                           </tbody>
+                       </table>
+    
+                    </div>
+                </div>
+        </div>
+    
+    </div>
+    </div>
+    

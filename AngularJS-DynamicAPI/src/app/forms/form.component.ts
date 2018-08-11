@@ -1,5 +1,8 @@
 import {Component} from'@angular/core'
-import { Employee } from '../forms/employeeform.model';
+import { Employee } from '../forms/models/employeeform.model';
+import { FormPoster } from './service/form.poster';
+import { NgForm } from '@angular/forms';
+
 
 @Component(
     {
@@ -9,9 +12,14 @@ import { Employee } from '../forms/employeeform.model';
 )
 export class FormComponent
 {
+    hasCodeLang:boolean=false;
     languages=["AngularJS","NodeJS","ReactJS","MongoDB"]
-    model=new Employee("Arch","asert",true,"female","NodeJS");
+    model=new Employee("Arch","Miry","a@a.com","harsika",true,"female","NodeJS");
 
+    constructor(private formPosterObj:FormPoster)
+    {
+
+    }
     firstToUpper(value:string)
     {
         if(value.length>0)
@@ -22,5 +30,23 @@ export class FormComponent
             this.model.fname=value
 
         }
+    }
+    validateCodeLang(event):void{
+        if(this.model.codeLang=="default")
+        {
+            this.hasCodeLang=true;
+        }
+        else{
+            this.hasCodeLang=false;
+        }
+
+    }
+    submitForm(form:NgForm)
+    {
+        console.log(this.model)
+        this.formPosterObj.postEmployeeForm(this.model)
+        .subscribe((data)=>console.log('success',data),
+                    (error)=>console.log('error',error))
+        
     }
 }

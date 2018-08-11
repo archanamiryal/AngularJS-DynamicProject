@@ -18,6 +18,7 @@ import { MusicComp } from './music/music.component';
 import { ProductComponent } from './products/product.component';
 import { ProductModule } from './products/product.module';
 import { FormComponent } from './forms/form.component';
+import { FormPoster } from './forms/service/form.poster';
 
 
 
@@ -53,6 +54,7 @@ import { FormComponent } from './forms/form.component';
     ],
     //All the Injectable go here service comes here
     providers:[
+        FormPoster
         
     ]
 
